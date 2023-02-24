@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav %}
+<div class="flex w-1/2 justify-end content-center space2">
+    <div class="fill-current h-6">
+        <a href="login_user">
+            <button
+                class="bg-gradient-to-r from-purple-800 to-green-500 
+                        hover:from-pink-500 hover:to-green-500 text-white 
+                        font-bold py-2 px-4 rounded focus:ring transform transition 
+                        hover:scale-105 duration-300 ease-in-out"
+                type='submit'
+                style="margin:5px;">
+                INGRESA
+            </button>
+        </a>
+    </div>
+    <div class="fill-current h-6">
+        <a href='register'>
+            <button
+                class="bg-gradient-to-r from-purple-800 to-green-500 
+                        hover:from-pink-500 hover:to-green-500 text-white 
+                        font-bold py-2 px-4 rounded focus:ring transform transition 
+                        hover:scale-105 duration-300 ease-in-out"
+                type='submit'
+                style="margin:5px;">
+                REGISTRATE
+            </button>
+        </a>
+    </div>
+</div>
+{% endblock  %}
+
+{% block content %}
+<div class="h-full">   
+    <div class="container pt-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <div class="flex flex-col w-full xl:w-3/6 justify-center lg:items-start overflow-y-hidden">
+            <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
+                ¡Bienvenido a tu 
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                    Astroalbum
+                </span>
+                digital!
+            </h1>
+            <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
+                ¡Es como tener un álbum de estampas coleccinable pero DIGITAL y completamente GRATIS!
+            </p>
+        </div>
+        <div class="w-full xl:w-3/6 p-12 overflow-hidden red-shadow">
+            <img class="mx-auto w-full md:w-2/3 transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6" src="{% static 'landing_image.png' %}" />
+        </div>
+    </div>
+</div>
+{% endblock %}

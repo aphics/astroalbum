@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav %}
+<div class="flex w-1/2 justify-end content-center space2">
+    <div class="fill-current h-6">
+        <strong style="margin:5px;">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                HOLA {{ user }}
+            </span>
+        </strong>
+    </div>
+    <div class="fill-current h-6">
+        <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button
+            class="bg-gradient-to-r from-purple-800 to-green-500 
+                hover:from-pink-500 hover:to-green-500 text-white 
+                font-bold py-2 px-4 rounded focus:ring transform transition 
+                hover:scale-105 duration-300 ease-in-out"
+            type="submit"
+            style="margin:5px;">
+            SALIR
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock  %}
+
+{% block content %}
+{% comment %} NAV2 {% endcomment %}
+<div class="w-full container mx-auto">
+    <div class="w-full flex items-center justify-between">
+        <a href="home">
+            <button
+                class="bg-gradient-to-r from-purple-800 to-green-500 
+                        hover:from-pink-500 hover:to-green-500 text-white 
+                        font-bold py-2 px-4 rounded focus:ring transform transition 
+                        hover:scale-105 duration-300 ease-in-out"
+                type='submit'
+                style="margin:5px;">
+                ALBUM
+            </button>
+        </a>
+    </div>
+</div>
+
+{% comment %} CONTENT {% endcomment %}
+<div class=''>
+    <form action="" method="post">
+        {% csrf_token %}
+        <h4 class="my-4 text-xl md:text-xl text-white opacity-75 font-bold 
+                leading-tight text-center md:text-left">
+            Selecciona una carta de tus cartas de intercambio, posteriormente selecciona una carta
+            de la pila de intercambio. Por último da click en el botón INTERCAMBIAR
+        </h4>
+        <p>
+        </p>
+        <div>
+            <button
+            class="bg-gradient-to-r from-purple-800 to-green-500 
+            hover:from-pink-500 hover:to-green-500 text-white 
+            font-bold py-2 px-4 rounded focus:ring transform transition 
+            hover:scale-105 duration-300 ease-in-out justify-end {{ cursor_status }}"
+            type='submit'
+            style="margin:5px;" {{ status_button }}>
+            INTERCAMBIAR
+            </button>
+        </div>
+        <h4 class="{{ msg_color }} my-4 text-xl md:text-xl opacity-75 font-bold 
+                 text-center md:text-left">
+            {{ msg_warning }}
+        </h4>
+        <div class="flex mb-4">
+            <div class="w-1/2 p-2 text-center">
+                <strong>
+                    <h5 class='text-white bg-gradient-to-r from-green-500 to-purple-800 p-3'>
+                        Tus cartas de intercambio
+                    </h5>
+                </strong>
+                <div>
+                    <h5 class= 'text-red-500'>{{ msg_user }}</h5>
+                </div>
+                    {% for user_card in user_cards %}
+                    <div class='container flex'>
+                        <div class='row'>                            
+                            <input type="radio" name="user_card_id" value={{ user_card.id }}>{{ user_card.id }}
+                        </div>
+                        <img src="{{ user_card.catalogue_id__image }}" width='100' height='100'
+                            class='rounded-full'>
+                        <p>{{ user_card.catalogue_id__name }}</p>
+                    </div>
+                    {% endfor %}
+            </div>
+            <div class="w-1/2 p-2 text-center">
+                <strong>
+                    <h5 class='text-white bg-gradient-to-r from-purple-800 to-green-500 p-3'>
+                        Pila de intercambio
+                    </h5>
+                </strong>
+                <div>
+                    <h5 class='text-red-500'>{{ msg_other }}</h5>
+                </div>
+                    {% for other_card in other_cards %}
+                    <div class='container flex'>
+                        <div class='row'>
+                            <input type="radio" name="other_card_id" value={{ other_card.id }}>{{ other_card.id }}
+                        </div>
+                        <img src="{{ other_card.catalogue_id__image}}" width='100' height='100'
+                            class='rounded-full'>
+                        <p> {{ other_card.catalogue_id__name }}</p>
+                    </div>
+                    {% endfor %}
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
