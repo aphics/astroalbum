@@ -52,7 +52,7 @@ ROOT_URLCONF = 'astroalbum.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates', 'album/templates', 'swapapp/templates'],
+        'DIRS': ['astroalbum/templates', 'album/templates', 'swapapp/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

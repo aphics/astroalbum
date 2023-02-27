@@ -1,37 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block nav %}
-<div class="flex w-1/2 justify-end content-center space2">
-    <div class="fill-current h-6">
-        <a href="login_user">
-            <button
-                class="bg-gradient-to-r from-purple-800 to-green-500 
-                        hover:from-pink-500 hover:to-green-500 text-white 
-                        font-bold py-2 px-4 rounded focus:ring transform transition 
-                        hover:scale-105 duration-300 ease-in-out"
-                type='submit'
-                style="margin:5px;">
-                INGRESA
-            </button>
-        </a>
-    </div>
-    <div class="fill-current h-6">
-        <a href='register'>
-            <button
-                class="bg-gradient-to-r from-purple-800 to-green-500 
-                        hover:from-pink-500 hover:to-green-500 text-white 
-                        font-bold py-2 px-4 rounded focus:ring transform transition 
-                        hover:scale-105 duration-300 ease-in-out"
-                type='submit'
-                style="margin:5px;">
-                REGISTRATE
-            </button>
-        </a>
-    </div>
-</div>
-{% endblock  %}
-
 {% block content %}
 <div class="h-full">   
     <div class="container pt-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center">

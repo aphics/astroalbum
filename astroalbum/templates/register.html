@@ -14,11 +14,12 @@
     </div>
     <form class="bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4" method='POST'>
         {% csrf_token %}
-        {{ msg }}
+        <p class='text-red-500'>{{ msg }}</p>
         <div class="mb-4">
             <label class="block text-blue-300 py-2 font-bold mb-2">
                 Registro
             </label>
+            <label>El usuario debe tener al menos 6 carácteres</label>
             <input
                 class="shadow appearance-none border rounded w-full p-3 text-gray-700 
                         leading-tight focus:ring transform transition hover:scale-105 
@@ -27,6 +28,7 @@
                 placeholder="Usuario"
                 name='user'
             />
+            <label>La contraseña debe tener una longitud de 8 carácteres. Al menos una minúscula, una mayúscula y un número</label>
             <input
                 class="shadow appearance-none border rounded w-full p-3 text-gray-700 
                         leading-tight focus:ring transform transition hover:scale-105 

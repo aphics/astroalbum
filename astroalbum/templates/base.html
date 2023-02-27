@@ -1,0 +1,134 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Astroalbum</title>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+      
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+        <!--Replace with your tailwind.css once created-->
+        <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="staticfiles/styles.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="leading-normal tracking-normal text-indigo-400 m-6 bg-cover bg-fixed" 
+        style="background-image: url('{% static "background_image.png" %}');">
+
+        {% comment %} Nav  {% endcomment %}
+        {% if user.is_authenticated %}
+        <div class="w-full container mx-auto" style="margin:15px;" >
+            <div class="w-full flex items-center justify-between">   
+                <a class="flex items-center text-indigo-400 no-underline 
+                    hover:no-underline font-bold text-2xl lg:text-4xl" href="/home">
+                    Astro
+                    <span class="bg-clip-text text-transparent 
+                        bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                    album
+                    </span>
+                </a>
+                <span class="bg-clip-text text-transparent 
+                    bg-gradient-to-r from-green-400 via-pink-500 to-purple-500 
+                    text-xl lg:text-2xl font-bold">
+                {{ user }}
+                </span>
+                <div class="fill-current h-6">
+                    <form action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button
+                        class="bg-gradient-to-r from-purple-800 to-green-500 
+                            hover:from-pink-500 hover:to-green-500 text-white 
+                            font-bold py-2 px-4 rounded-xl focus:ring transform transition 
+                            hover:scale-105 duration-300 ease-in-out"
+                        type="submit"
+                        {% comment %} style="margin:5px;"> {% endcomment %}
+                        style="">
+                        SALIR
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="w-full container mx-auto bg-gradient-to-b from-slate-800 to-indigo-500 rounded-xl">
+            <div class="w-full flex items-center justify-between">
+                <a href="/home">
+                    <button
+                        class="bg-gradient-to-r from-purple-800 to-green-500 
+                                hover:from-pink-500 hover:to-green-500 text-white 
+                                font-bold py-2 px-4 rounded-xl focus:ring transform transition 
+                                hover:scale-105 duration-300 ease-in-out"
+                        type='submit'
+                        style="margin:5px;">
+                        ALBUM
+                    </button>
+                </a>
+                <a href="/new_card">
+                    <button
+                        class="bg-gradient-to-r from-purple-800 to-green-500 
+                                hover:from-pink-500 hover:to-green-500 text-white 
+                                font-bold py-2 px-4 rounded-xl focus:ring transform transition 
+                                hover:scale-105 duration-300 ease-in-out"
+                        type='submit'
+                        style="margin:5px;">
+                        NUEVA CARTA
+                    </button>
+                </a>
+                <a href="/swap_pool">
+                    <button
+                        class="bg-gradient-to-r from-purple-800 to-green-500 
+                                hover:from-pink-500 hover:to-green-500 text-white 
+                                font-bold py-2 px-4 rounded-xl focus:ring transform transition 
+                                hover:scale-105 duration-300 ease-in-out"
+                        type='submit'
+                        style="margin:5px;">
+                        PILA DE INTERCAMBIO
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class'p-4' style="margin:15px;"></div>
+        {% else %}
+        <div class="w-full container mx-auto">
+            <div class="w-full flex items-center justify-between">
+                <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
+                    Astro<span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">album</span>
+                </a>
+                <div class="flex w-1/2 justify-end content-center space2">
+                    <div class="fill-current h-6">
+                        <a href="login_user">
+                            <button
+                                class="bg-gradient-to-r from-purple-800 to-green-500 
+                                        hover:from-pink-500 hover:to-green-500 text-white 
+                                        font-bold py-2 px-4 rounded-xl focus:ring transform transition 
+                                        hover:scale-105 duration-300 ease-in-out"
+                                type='submit'
+                                style="margin:5px;">
+                                INGRESA
+                            </button>
+                        </a>
+                    </div>
+                    <div class="fill-current h-6">
+                        <a href='register'>
+                            <button
+                                class="bg-gradient-to-r from-purple-800 to-green-500 
+                                        hover:from-pink-500 hover:to-green-500 text-white 
+                                        font-bold py-2 px-4 rounded-xl focus:ring transform transition 
+                                        hover:scale-105 duration-300 ease-in-out"
+                                type='submit'
+                                style="margin:5px;">
+                                REGISTRATE
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    
+        {% block content %}
+        {% endblock %}   
+    </body>
+</html>

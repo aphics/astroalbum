@@ -1,78 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block nav %}
-<div class="flex w-1/2 justify-end content-center space2">
-    <div class="fill-current h-6">
-        <strong style="margin:5px;">
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-                HOLA {{ user }}
-            </span>
-        </strong>
-    </div>
-    <div class="fill-current h-6">
-        <form action="{% url 'logout' %}" method="POST">
-            {% csrf_token %}
-            <button
-            class="bg-gradient-to-r from-purple-800 to-green-500 
-                hover:from-pink-500 hover:to-green-500 text-white 
-                font-bold py-2 px-4 rounded focus:ring transform transition 
-                hover:scale-105 duration-300 ease-in-out"
-            type="submit"
-            style="margin:5px;">
-            SALIR
-            </button>
-        </form>
-    </div>
-</div>
-{% endblock  %}
-
 {% block content %}
-{% comment %} NAV2 {% endcomment %}
-<div class="w-full container mx-auto">
-    <div class="w-full flex items-center justify-between">
-        <a href="home">
-            <button
-                class="bg-gradient-to-r from-purple-800 to-green-500 
-                        hover:from-pink-500 hover:to-green-500 text-white 
-                        font-bold py-2 px-4 rounded focus:ring transform transition 
-                        hover:scale-105 duration-300 ease-in-out"
-                type='submit'
-                style="margin:5px;">
-                ALBUM
-            </button>
-        </a>
-        <a href="new_card">
-            <button
-                class="bg-gradient-to-r from-purple-800 to-green-500 
-                        hover:from-pink-500 hover:to-green-500 text-white 
-                        font-bold py-2 px-4 rounded focus:ring transform transition 
-                        hover:scale-105 duration-300 ease-in-out"
-                type='submit'
-                style="margin:5px;">
-                NUEVA CARTA
-            </button>
-        </a>
-        <a href="swap_pool">
-            <button
-                class="bg-gradient-to-r from-purple-800 to-green-500 
-                        hover:from-pink-500 hover:to-green-500 text-white 
-                        font-bold py-2 px-4 rounded focus:ring transform transition 
-                        hover:scale-105 duration-300 ease-in-out"
-                type='submit'
-                style="margin:5px;">
-                PILA DE INTERCAMBIO
-            </button>
-        </a>
-    </div>
-</div>
-
-{% comment %} CONTENT {% endcomment %}
-
 <div class='grid grid-cols-3 gap-4 content-center'>
     {% for card in cards %}
     <div class='content-center'>
-        <figure class=" bg-indigo-200 rounded-xl content-center">
+        <figure class="bg-indigo-200 rounded-xl content-center red-shadow p-2">
             <img src='{{ card.catalogue_id__image }}' 
             class="md: h-auto md:rounded-none rounded-full mx-auto" 
             width="192" height="256">
@@ -86,7 +19,7 @@
                 <button 
                 class="bg-gradient-to-r from-purple-800 to-green-500 
                         hover:from-pink-500 hover:to-green-500 text-white 
-                        font-bold py-2 px-4 rounded focus:ring transform transition 
+                        font-bold py-2 px-4 rounded-xl focus:ring transform transition 
                         hover:scale-105 duration-300 ease-in-out content-center"
                 type='submit'
                 style="margin:5px;"
@@ -96,7 +29,7 @@
                 <button 
                 class="bg-gradient-to-r from-purple-800 to-green-500 
                         hover:from-pink-500 hover:to-green-500 text-white 
-                        font-bold py-2 px-4 rounded focus:ring transform transition 
+                        font-bold py-2 px-4 rounded-xl focus:ring transform transition 
                         hover:scale-105 duration-300 ease-in-out content-center"
                 type='submit'
                 style="margin:5px;"
