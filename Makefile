@@ -12,3 +12,6 @@ run-prod:
 
 shell_plus:
 	python manage.py shell_plus --settings=settings.local --ipython
+
+test:
+	python manage.py test --settings=settings.local -v 3

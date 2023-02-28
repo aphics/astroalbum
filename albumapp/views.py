@@ -28,6 +28,10 @@ def home(request):
     return render(request, 'home.html', {'cards': user_distinct_cards})
 
 
+def random_catalogue_instance(_model):
+    return _model.objects.get(pk=random.randrange(1, _model.objects.count()))
+
+
 @login_required(login_url='landing')
 def adquire_new_card(request):   
     """     Vista de la página de adquisición de nueva carta
@@ -35,9 +39,9 @@ def adquire_new_card(request):
         Si el servidor recibe una petición con el método POST, se le asigna una
         nueva instancia del modelo Album al usuario.
 
-        Se incluyen 3 funciones: 
+        Se hace uso de 3 funciones: 
         - random_catalogue_instance, la cual selecciona una instancia aleatoria
-            del modelo Catalogue y retorna esta.
+            del modelo Catalogue y retorna esta. Esta función se encuentra fuera
         - save_album_instance, la cual crea una nueva instancia del modelo Album.
         - get_card_info, la cual obtiene la información del modelo Catalogue a
             partir de la llave foránea catalogue_id del modelo Album
@@ -49,11 +53,8 @@ def adquire_new_card(request):
         render: Renderea new_card.html en caso de que el usuario esté autenticado.
                 Si la petición fue POST, se incluye la información de la instancia
                 Catalogue
-    """
+    """    
 
-    def random_catalogue_instance(_model):
-        return _model.objects.get(pk=random.randrange(1, _model.objects.count()))
-    
     def save_album_instance(user, random_messier):
         new_card = Album(user_id=user.id, catalogue_id=random_messier.id, swap_status=False)
         new_card.save()
@@ -146,6 +147,10 @@ def delete_card(request, id):
     else:
         return redirect('home')
 
+def change_swap_status(card):
+    card.swap_status = not card.swap_status
+    card.save()
+
 @login_required(login_url='landing')
 def swap_status_card(request, id):
     """     Función para cambiar el status de intercambio de una instancia Album
@@ -163,9 +168,6 @@ def swap_status_card(request, id):
         render: Renderea swap_card.html, junto con los campos de las instancias
                 Album del usuario
     """
-    def change_swap_status(card):
-        card.swap_status = not card.swap_status
-        card.save()
     
     card = Album.objects.get(id=id)
     change_swap_status(card)
