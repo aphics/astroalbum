@@ -14,7 +14,7 @@ test-local:
 	python manage.py test --settings=settings.local -v 3
 
 run-prod:
-	python manage.py runserver --settings=settings.prod
+	python manage.py runserver 0.0.0.0:8000 --settings=settings.prod
 
 migrate-prod:
 	python manage.py migrate --settings=settings.prod
