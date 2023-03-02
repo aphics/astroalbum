@@ -1,6 +1,7 @@
 z_recursos
 env
 settings/local.py
+.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
