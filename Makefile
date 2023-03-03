@@ -27,3 +27,6 @@ shell_plus-prod:
 
 test-prod:
 	python manage.py test --settings=settings.prod -v 3
+
+collectstatic:
+	python manage.py collectstatic --settings=settings.prod
