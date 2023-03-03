@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h4 class="my-4 text-xl md:text-xl text-white opacity-75 font-bold 
+                leading-tight text-center md:text-left">
+    Esta es tu colección de astrocartas. 
+    <br>
+    Da click en el botón saber más en cada AstroCarta para conocer la información del objeto Messier. 
+    <br>
+    Da click en el botón intercambio para conocer tus cartas repetidas y darlas de lata para intercambiar
+    <br>
+    El catálogo Messier es un catálogo con 110 objetos astronómicos. Actualmente la aplicación cuenta
+    con los primeros 34 de ellos. Estaremos añdiendo más en los próximos días.
+</h4>
 <div class='grid grid-cols-3 gap-4 content-center'>
     {% for card in cards %}
     <div class='content-center'>
