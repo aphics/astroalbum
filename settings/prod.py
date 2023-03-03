@@ -5,7 +5,7 @@ import pymysql
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['198.199.72.110']
 
 
 # Database
@@ -18,9 +18,9 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'name_DB',
-        'USER': 'user_DB',
-        'PASSWORD': 'password_DB',
+        'NAME': 'astroalbum_db',
+        'USER': 'aphics',
+        'PASSWORD': 'astro',
         'HOST': 'localhost',
         'PORT': '3306',
     }
