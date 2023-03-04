@@ -2,6 +2,7 @@ z_recursos/
 env/
 settings/local.py
 .vscode
+fabfile.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
